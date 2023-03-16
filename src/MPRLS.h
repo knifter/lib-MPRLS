@@ -15,6 +15,7 @@ class MPRLS: public TwoWireDevice {
 
         bool begin();
 
+  		float readPressureHPA(void);
   		float readPressurePSI(void);
 
 	private:

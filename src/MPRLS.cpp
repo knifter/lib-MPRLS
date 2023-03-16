@@ -36,8 +36,18 @@ float MPRLS::readPressurePSI()
 	if(!readData())
 		return NAN;
 
-	float temp = ((_temp_raw * 200) / OUTPUT_MIN) - 50;
-	return ((_pres_raw - OUTPUT_MIN) * (PRES_MAX-PRES_MIN)) / (OUTPUT_MAX - OUTPUT_MIN) + PRES_MIN;
+	// float temp = ((_temp_raw * 200) / OUTPUT_MIN) - 50;
+    float pres = (((float)_pres_raw - OUTPUT_MIN) * (PRES_PSI_MAX-PRES_PSI_MIN)) / (OUTPUT_MAX - OUTPUT_MIN) + PRES_PSI_MIN;
+	return pres;
+};
+float MPRLS::readPressureHPA() 
+{
+	if(!readData())
+		return NAN;
+
+	// float temp = ((_temp_raw * 200) / OUTPUT_MIN) - 50;
+    float pres = (((float)_pres_raw - OUTPUT_MIN) * (PRES_HPA_MAX-PRES_HPA_MIN)) / (OUTPUT_MAX - OUTPUT_MIN) + PRES_HPA_MIN;
+	return pres;
 };
 
 /**************************************************************************/
